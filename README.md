@@ -25,3 +25,25 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## NetLify
+
+Como criar e adicionar o arquivo _redirects:
+
+Criar o arquivo:
+
+Abra um editor de texto simples, como o Bloco de Notas (Notepad) no Windows ou o TextEdit no macOS (configurado para texto simples).
+
+Nome do arquivo:
+_redirects
+
+Digite a regra de redirecionamento: 
+/* /index.html 200.
+
+Salve o arquivo com o nome _redirects, certificando-se de que não há nenhuma extensão no nome do arquivo. No Windows, você pode precisar colocar o nome entre aspas, como "_redirects", ao salvar, para evitar que o editor adicione uma extensão automaticamente.
+Adicionar ao projeto:
+Coloque o arquivo _redirects na pasta de saída do build do seu projeto Angular. Normalmente, essa pasta é dist/nome-do-seu-projeto se você estiver usando o Angular CLI padrão para construir seu projeto.
+O arquivo deve estar na raiz dessa pasta de saída, ao lado do index.html.
+Deploy no Netlify:
+Faça o deploy da sua aplicação no Netlify novamente. Você pode fazer isso fazendo um commit e push das mudanças para o seu repositório git se estiver usando a integração contínua do Netlify, ou pode fazer o upload manual dos arquivos da pasta de build se estiver usando o deploy manual.
+Essa configuração garantirá que todas as solicitações HTTP para rotas em sua aplicação Angular sejam direcionadas ao index.html, permitindo que o roteamento do lado do cliente funcione corretamente, mesmo em recargas de página ou quando acessadas diretamente pela URL
