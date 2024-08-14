@@ -8,16 +8,19 @@ import { CHARACTER } from '../constants/urls';
   providedIn: 'root',
 })
 export class RickMortyApiService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
   getCharacters(): Observable<Character[]> {
-    return this.http.get<Array<Character>>(CHARACTER);
+    return this.http.get<Character[]>(CHARACTER);
   }
 
   searchCharacter(name: string): Observable<Character[]> {
-    const params = new HttpParams().set('name', name);
-    return this.http.get<Character[]>(CHARACTER, { params })
-  }
+    const trimmedName = name.trim();
+    if (!trimmedName) {
+      return this.getCharacters();
+    }
 
+    const params = new HttpParams().set('name', trimmedName);
+    return this.http.get<Character[]>(CHARACTER, { params });
+  }
 }
